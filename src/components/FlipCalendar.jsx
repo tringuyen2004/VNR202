@@ -3,23 +3,35 @@ import { useTexture } from '@react-three/drei';
 import { useFrame } from '@react-three/fiber';
 import * as THREE from 'three';
 
-import img1 from '../assets/1.png';
+import imgBia from '../assets/1.png';
 import img2 from '../assets/2.png';
-import img3 from '../assets/3.png';
+import img2back from '../assets/2_matsau.png';
 import img4 from '../assets/4.png';
-import img5 from '../assets/5.png';
+import img4back from '../assets/4_matsau.png';
 import img6 from '../assets/6.png';
-import img7 from '../assets/7.png';
+import img6back from '../assets/6_matsau.png';
 import img8 from '../assets/8.png';
-import img9 from '../assets/9.png';
+import img8back from '../assets/8_matsau.png';
 import img10 from '../assets/10.png';
-import img11 from '../assets/11.png';
+import img10back from '../assets/10_matsau.png';
 import img12 from '../assets/12.png';
-import img13 from '../assets/13.png';
-// img2-img13 = tháng 1-12 (mặt trước)
-const monthImages = [img2, img3, img4, img5, img6, img7, img8, img9, img10, img11, img12, img13];
-// Mặt sau: tất cả dùng img1
-const backImages = [img1, img1, img1, img1, img1, img1, img1, img1, img1, img1, img1, img1];
+import img12back from '../assets/12_matsau.png';
+import img14 from '../assets/14.png';
+import img14back from '../assets/14_matsau.png';
+import img16 from '../assets/16.png';
+import img16back from '../assets/16_matsau.png';
+import img18 from '../assets/18.png';
+import img18back from '../assets/18_matsau.png';
+import img20 from '../assets/20.png';
+import img20back from '../assets/20_matsau.png';
+import img22 from '../assets/22.png';
+import img22back from '../assets/22_matsau.png';
+import img24 from '../assets/24.png';
+import img24back from '../assets/24_matsau.png';
+// Mặt trước: Bìa + tháng 1-12
+const monthImages = [imgBia, img2, img4, img6, img8, img10, img12, img14, img16, img18, img20, img22, img24];
+// Mặt sau: tương ứng từng tháng
+const backImages = [imgBia, img2back, img4back, img6back, img8back, img10back, img12back, img14back, img16back, img18back, img20back, img22back, img24back];
 
 const FLIP_SPEED = 5;
 
@@ -160,7 +172,7 @@ export function FlipCalendar({ currentPage = 0, onNext, onPrev, ...props }) {
     const x = -width / 2;
     const y = -height / 2;
 
-    shape.moveTo(x, y + radius);
+    shape.moveTo(x, y + radius); 
     shape.lineTo(x, y + height - radius);
     shape.quadraticCurveTo(x, y + height, x + radius, y + height);
     shape.lineTo(x + width - radius, y + height);

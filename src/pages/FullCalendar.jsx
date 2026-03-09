@@ -2,18 +2,17 @@ import { useState, useEffect, Suspense } from 'react';
 import { Canvas } from '@react-three/fiber';
 import { OrbitControls, Environment, ContactShadows } from '@react-three/drei';
 import { FlipCalendar } from '../components/FlipCalendar';
-import { Link } from 'react-router-dom';
 
 const pageLabels = [
-  'Trang 1', 'Trang 2', 'Trang 3', 'Trang 4',
-  'Trang 5', 'Trang 6', 'Trang 7', 'Trang 8',
-  'Trang 9', 'Trang 10', 'Trang 11', 'Trang 12'
+  'Bìa', 'Tháng 1', 'Tháng 2', 'Tháng 3',
+  'Tháng 4', 'Tháng 5', 'Tháng 6', 'Tháng 7',
+  'Tháng 8', 'Tháng 9', 'Tháng 10', 'Tháng 11', 'Tháng 12'
 ];
 
 function FullCalendar() {
   const [currentPage, setCurrentPage] = useState(0);
 
-  const goNext = () => setCurrentPage(prev => Math.min(prev + 1, 12));
+  const goNext = () => setCurrentPage(prev => Math.min(prev + 1, 13));
   const goPrev = () => setCurrentPage(prev => Math.max(prev - 1, 0));
 
   // Keyboard navigation
@@ -34,17 +33,9 @@ function FullCalendar() {
   return (
     <div className="w-full h-screen bg-[#e0e0e0] flex flex-col items-center justify-center relative">
       {/* Top bar */}
-      <div className="absolute top-0 left-0 w-full p-4 z-20 flex justify-between items-start pointer-events-none">
-        <Link
-          to="/"
-          className="pointer-events-auto bg-white/80 backdrop-blur-sm px-4 py-2 rounded-full shadow-md text-sm md:text-base text-slate-700 font-medium hover:bg-white transition-colors whitespace-nowrap"
-        >
-          ← Trở lại
-        </Link>
-        <div className="text-right">
-          <h1 className="text-xl font-bold text-slate-700">Lịch bàn lật</h1>
-          <p className="text-slate-500 text-sm">Click trang để lật • Kéo để xoay • Phím ← →</p>
-        </div>
+      <div className="absolute top-0 right-0 p-4 z-20 text-right">
+        <h1 className="text-xl font-bold text-slate-700">Lịch bàn lật</h1>
+        <p className="text-slate-500 text-sm">Click trang để lật • Kéo để xoay • Phím ← →</p>
       </div>
 
       {/* 3D Canvas */}
@@ -95,12 +86,12 @@ function FullCalendar() {
         </button>
 
         <div className="bg-white/90 backdrop-blur-sm px-5 py-2.5 rounded-full shadow-lg text-slate-700 font-bold min-w-[120px] text-center select-none">
-          {currentPage < 12 ? pageLabels[currentPage] : 'Hết'}
+          {currentPage < 13 ? pageLabels[currentPage] : 'Hết'}
         </div>
 
         <button
           onClick={goNext}
-          disabled={currentPage === 12}
+          disabled={currentPage === 13}
           className="bg-white/90 backdrop-blur-sm px-5 py-2.5 rounded-full shadow-lg text-slate-700 font-medium hover:bg-white hover:scale-105 active:scale-95 transition-all disabled:opacity-30 disabled:cursor-not-allowed disabled:hover:scale-100"
         >
           Sau →
@@ -109,7 +100,7 @@ function FullCalendar() {
 
       {/* Page dots indicator */}
       <div className="absolute bottom-20 left-1/2 -translate-x-1/2 z-20 flex gap-1.5">
-        {Array.from({ length: 12 }, (_, i) => (
+        {Array.from({ length: 13 }, (_, i) => (
           <button
             key={i}
             onClick={() => setCurrentPage(i)}
