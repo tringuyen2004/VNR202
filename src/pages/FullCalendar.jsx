@@ -67,6 +67,7 @@ function FullCalendar() {
 
           <OrbitControls
             enablePan={false}
+            zoomToCursor
             minPolarAngle={Math.PI / 6}
             maxPolarAngle={Math.PI / 1.5}
             minDistance={4}
